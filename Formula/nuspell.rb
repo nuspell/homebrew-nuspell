@@ -1,8 +1,8 @@
 class Nuspell < Formula
   desc "Spell checker"
   homepage "https://nuspell.github.io"
-  url "https://github.com/nuspell/nuspell/archive/v3.0.0.tar.gz"
-  sha256 "9ce86d5463723cc7dceba9d1dd046e1022ed5e3004ac6d12f2daaf5b090a6066"
+  url "https://github.com/nuspell/nuspell/archive/v3.1.0.tar.gz"
+  sha256 "188f0048160b57e47a37506f035b8f624e9046150c311f1a743870cd222effd1"
 
   depends_on "cmake" => :build
   depends_on "gnu-tar" => :test

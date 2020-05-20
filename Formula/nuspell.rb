@@ -1,5 +1,5 @@
 class Nuspell < Formula
-  desc "Spell checker"
+  desc "Spellchecker"
   homepage "https://nuspell.github.io"
   url "https://github.com/nuspell/nuspell/archive/v3.1.1.tar.gz"
   sha256 "a0de090c3786df33392dde5ea8b0121f0fd852d68169834732a46f4d010990b1"

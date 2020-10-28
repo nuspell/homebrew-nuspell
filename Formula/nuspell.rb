@@ -1,8 +1,8 @@
 class Nuspell < Formula
   desc "Spellchecker"
   homepage "https://nuspell.github.io"
-  url "https://github.com/nuspell/nuspell/archive/v3.1.2.tar.gz"
-  sha256 "f59f8a27e97047f30659182f244daca8e05e052710c0ea5d845c2cb00f6c6eca"
+  url "https://github.com/nuspell/nuspell/archive/v4.0.0.tar.gz"
+  sha256 "4ab548c7a0d3e10ce68598ce8954d60dd2dd2c9a377e4597fc310127905dee2c"
 
   depends_on "cmake" => :build
   depends_on "gnu-tar" => :test
@@ -30,7 +30,7 @@ class Nuspell < Formula
       ENV["GEM_HOME"] = buildpath/"gem_home"
       system "gem", "install", "ronn"
       ENV.prepend_path "PATH", buildpath/"gem_home/bin"
-      system "cmake", "..", "-DBUILD_SHARED_LIBS=ON", "-DBUILD_TESTING=OFF", *std_cmake_args
+      system "cmake", "..", "-DCMAKE_BUILD_TYPE=Release", "-DBUILD_TESTING=OFF", *std_cmake_args
       system "cmake", "--build", ".", "--target", "install"
     end
   end

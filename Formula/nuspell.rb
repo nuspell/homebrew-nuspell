@@ -1,14 +1,14 @@
 class Nuspell < Formula
   desc "Spellchecker"
   homepage "https://nuspell.github.io"
-  url "https://github.com/nuspell/nuspell/archive/v4.0.0.tar.gz"
-  sha256 "4ab548c7a0d3e10ce68598ce8954d60dd2dd2c9a377e4597fc310127905dee2c"
+  url "https://github.com/nuspell/nuspell/archive/v4.0.1.tar.gz"
+  sha256 "e1883c919ec2878ffe2e47acf28eec352322e71b1a0511ccadf9c15fdfc30a0d"
 
   depends_on "cmake" => :build
+  depends_on "pandoc" => :build
   depends_on "gnu-tar" => :test
   depends_on "grep" => :test
   depends_on "boost"
-  uses_from_macos "ruby" => :build
   uses_from_macos "binutils" => :test
   uses_from_macos "icu4c"
 
@@ -27,9 +27,6 @@ class Nuspell < Formula
       ENV["SDKROOT"] = ENV["HOMEBREW_SDKROOT"] = MacOS::CLT.sdk_path(MacOS.version)
     end
     mkdir "build" do
-      ENV["GEM_HOME"] = buildpath/"gem_home"
-      system "gem", "install", "ronn"
-      ENV.prepend_path "PATH", buildpath/"gem_home/bin"
       system "cmake", "..", "-DCMAKE_BUILD_TYPE=Release", "-DBUILD_TESTING=OFF", *std_cmake_args
       system "cmake", "--build", ".", "--target", "install"
     end

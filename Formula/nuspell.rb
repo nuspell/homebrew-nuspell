@@ -1,14 +1,13 @@
 class Nuspell < Formula
   desc "Spellchecker"
   homepage "https://nuspell.github.io"
-  url "https://github.com/nuspell/nuspell/archive/v4.1.0.tar.gz"
-  sha256 "fff5723ee2edfb8131b5da71dd1a69e34c40db2eef54b2658f3da7efe7d91c91"
+  url "https://github.com/nuspell/nuspell/archive/v4.2.0.tar.gz"
+  sha256 "01804d490bec517748ee49fa2f1249f4c99380c26335e32082cdaa02b5b2b4dc"
 
   depends_on "cmake" => :build
   depends_on "pandoc" => :build
   depends_on "gnu-tar" => :test
   depends_on "grep" => :test
-  depends_on "boost"
   uses_from_macos "binutils" => :test
   uses_from_macos "icu4c"
 

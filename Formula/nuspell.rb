@@ -3,13 +3,14 @@ class Nuspell < Formula
   homepage "https://nuspell.github.io"
   url "https://github.com/nuspell/nuspell/archive/v4.2.0.tar.gz"
   sha256 "01804d490bec517748ee49fa2f1249f4c99380c26335e32082cdaa02b5b2b4dc"
+  revision 2
 
+  depends_on "icu4c"
   depends_on "cmake" => :build
   depends_on "pandoc" => :build
   depends_on "gnu-tar" => :test
   depends_on "grep" => :test
   uses_from_macos "binutils" => :test
-  uses_from_macos "icu4c"
 
   resource "test_dictionary" do
     url "http.us.debian.org/debian/pool/main/s/scowl/hunspell-en-us_2019.10.06-1_all.deb"
@@ -22,11 +23,9 @@ class Nuspell < Formula
   end
 
   def install
-    if MacOS.version >= :mojave && MacOS::CLT.installed?
-      ENV["SDKROOT"] = ENV["HOMEBREW_SDKROOT"] = MacOS::CLT.sdk_path(MacOS.version)
-    end
     mkdir "build" do
-      system "cmake", "..", "-DCMAKE_BUILD_TYPE=Release", "-DBUILD_TESTING=OFF", *std_cmake_args
+      icu4c_prefix = Formula["icu4c"].opt_prefix
+      system "cmake", "..", "-DICU_ROOT=#{icu4c_prefix}", *std_cmake_args
       system "cmake", "--build", ".", "--target", "install"
     end
   end

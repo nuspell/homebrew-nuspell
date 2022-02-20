@@ -6,7 +6,6 @@ class Nuspell < Formula
 
   depends_on "icu4c"
   depends_on "cmake" => :build
-  depends_on "pandoc" => :build
 
   def install
     mkdir "build" do

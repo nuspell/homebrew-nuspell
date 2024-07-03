@@ -1,11 +1,12 @@
 class Nuspell < Formula
   desc "Spellchecker"
   homepage "https://nuspell.github.io"
-  url "https://github.com/nuspell/nuspell/archive/refs/tags/v5.1.4.tar.gz"
-  sha256 "bdf344c5adbcc6797940f8f8cb75cb59f5a3794eb21b9547751a11782a792ef7"
+  url "https://github.com/nuspell/nuspell/archive/refs/tags/v5.1.5.tar.gz"
+  sha256 "39fa6d9da6797cd711d7981b1f55359c55dfa4a302560e645cb59af6f764401a"
 
   depends_on "icu4c"
   depends_on "cmake" => :build
+  depends_on "pandoc" => :build
 
   def install
     mkdir "build" do
